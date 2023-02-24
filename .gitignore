@@ -1,4 +1,8 @@
-data/
 *.pyc
 *.bam
+*.bam.bai
 *.fa
+*.fai
+*score.txt
+*score.txt.idx
+data/bam
