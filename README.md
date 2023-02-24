@@ -91,14 +91,23 @@ THREADS=6 CONCURRENCY=3 RATE=0.1 SAMPLE=HG002 bash ~/git/AvidityManuscript2023/b
 THREADS=6 CONCURRENCY=3 RATE=0.1 SAMPLE=HG002 bash ~/git/AvidityManuscript2023/bash/run_error_by_kmer.sh -r <path_to_sample_specific_dir_containing_bam> -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -b AvidityManuscript2023/data/bed/GRCh38_10bp_1000000_random/ -i test__kmer-3 -o test_kmer-3/ -k 3 -w <path_to_scratch_dir>
 ```
 
+The scripts/notebooks supporting the plots and figure generation can be found below:
+```
+jupyter lab --no-browser
+<notebooks/compare_kmer_error.ipynb>
+```
+
 ## ExtendedDataFigure 3
 
 Extended Data Fig. 3: Histogram of pairwise error differences.  Difference was selected as the metric to cancel the effects of human variants from the mismatch percent.
+
+Data was analyzed and plotted as described in Figure 4 (https://github.com/Elembio/AvidityManuscript2023/blob/main/README.md#figure-4)
 
 ## ExtendedDataFigure 4
 
 Extended Data Fig. 4: IGV display of homopolymer loci at the 5thth, 50thth, and 95thth percentile of AVITI minus NovaSeq mismatch percent (corresponding to the dashed lines of Extended Data Fig. 3).  The red bar at the top indicates the homopolymer.  Colors within the IGV read stack correspond to mismatches and softclipping.  Only mismatches contribute to the error rate calculation and softclipped bases are ignored.    
 
+Data was analyzed and plotted as described in Figure 4 (https://github.com/Elembio/AvidityManuscript2023/blob/main/README.md#figure-4)
 
 ## ExtendedDataFigure 5 
 
