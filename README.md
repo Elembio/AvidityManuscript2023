@@ -25,10 +25,10 @@ not applicable
 
 Figure 3: Predicted and observed quality scores for a 2x150 bp sequencing run of human genome HG002.  The left panel shows read 1 and the right panel shows read 2.  Points on the diagonal indicate that predicted scores match observed scores.  The histograms show that the majority of the data points are above Q40, or 1 error in 10,000 bp.
 
-BBS-0174, processed through bwa using `Homo_sapiens_assembly38`.  GATK BaseRecalibrator
+BBS-0174, downsampled to 35x coverage, aligned to `Homo_sapiens_assembly38` using sentieon-bwa and processed via `GATK BaseRecalibrator` using the below command:
 
 ```
-gatk BaseRecalibrator --preserve-qscores-less-than 0 -R genome.fa -I sample.bam --known-sites HG002_GRCh38_1_22_v4.2.1_benchmark.vcf.gz --known-sites 1000G_phase1.snps.high_confidence.hg38.vcf.gz --known-sites dbsnp_144.hg38.vcf.gz         -L HG002_GRCh38_1_22_v4.2.1_benchmark_noinconsistent.bed -O sample.table
+gatk BaseRecalibrator --preserve-qscores-less-than 0 -R genome.fa -I sample.bam --known-sites HG002_GRCh38_1_22_v4.2.1_benchmark.vcf.gz --known-sites 1000G_phase1.snps.high_confidence.hg38.vcf.gz --known-sites dbsnp_144.hg38.vcf.gz -L HG002_GRCh38_1_22_v4.2.1_benchmark_noinconsistent.bed -O sample.table
 ```
 
 ## Figure-4
