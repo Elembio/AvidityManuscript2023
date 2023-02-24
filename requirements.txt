@@ -3,3 +3,12 @@ s3path
 pybedtools
 pysam
 tqdm
+jupyter
+jupyterlab
+jupytext
+jupyterlab_code_formatter
+pandas
+scipy
+matplotlib
+seaborn
+openpyxl
