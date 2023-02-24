@@ -42,6 +42,9 @@ The average error rate was computed for avidity sequencing runs and for publicly
 
 Publicly available data sets for HiSeq and NovaSeq were obtained from the Google Brain Public Data repository on Google Cloud and from the PrecisionFDA Truth Challenge 2 data repository[41, 42]. 
 
+The *.interval-error.tsv and *.offset-error.tsv files can be found in the below directory:
+https://github.com/Elembio/AvidityManuscript2023/tree/main/data/homopolymer-error/GRCh38_SimpleRepeat_homopolymer_gt11_slop5
+
 The command used to generate the homopoylmer-error can be found below.
 
 ```
@@ -53,7 +56,6 @@ The scripts/notebooks supporting the plots and figure generation can be found be
 jupyter lab --no-browser
 <notebooks/compare_read_stack.ipynb>
 ```
-
 
 ## Figure-5
 not applicable
