@@ -58,7 +58,7 @@ https://github.com/Elembio/AvidityManuscript2023/tree/main/data/homopolymer-erro
 The command used to generate the homopoylmer-error can be found below.
 
 ```
-THREADS=12 CONCURRENCY=12 RATE=1.0 SLOP=5 MIN_INTERVAL=1 MIN_PRE=10 MIN_POST=10 bash AvidityManuscript2023/bash/run_stack_reads.sh -r <path_to_sample_specific_dir_containing_bam> -b AvidityManuscript2023/data/bed/GRCh38_SimpleRepeat_homopolymer_gt11_slop5/ -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -i test__GRCh38_SimpleRepeat_homopolymer_gt11_slop5 -o test__GRCh38_SimpleRepeat_homopolymer_gt11_slop5 -w <path_to_scratch_dir>
+THREADS=6 CONCURRENCY=3 RATE=1.0 SLOP=5 MIN_INTERVAL=1 MIN_PRE=10 MIN_POST=10 bash AvidityManuscript2023/bash/run_stack_reads.sh -r <path_to_sample_specific_dir_containing_bam> -b AvidityManuscript2023/data/bed/GRCh38_SimpleRepeat_homopolymer_gt11_slop5/ -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -i test__GRCh38_SimpleRepeat_homopolymer_gt11_slop5 -o test__GRCh38_SimpleRepeat_homopolymer_gt11_slop5 -w <path_to_scratch_dir>
 ```
 
 The scripts/notebooks supporting the plots and figure generation can be found below:
@@ -80,6 +80,16 @@ not applicable
 Extended Data Fig. 2: Percentage of instances that a k-mer contained at least one mismatch compared across 3 instruments.  Panels A, B, and C display 1-mers, 2-mers, and 3-mers, respectively.  The bars are sorted by AVITI contexts from most to least accurate.      
 
 The same run used to generate the recalibrated quality scores was analyzed via custom script for all k-mers of size 1, 2, and 3.  The computation is based on 1% of a 35X genome to ensure adequate sampling of each k-mer.  For example, each 3-mer is sampled at least 850 thousand times with an average of 6.7 million times.  The figure is based on a publicly available run from each platform.  For the instances of each k-mer, the percent mismatching a variant-masked reference was computed.  The same script was applied to a publicly available NovaSeq data set for HG002 and a publicly available NextSeq 2000 data set for HG001 (demo data for HG002 was not available).  We tabulated the number of k-mers in which the percent incorrect was lowest for AVITI among the three platforms compared.   
+
+The command used to generate the kmer-error can be found below.
+```
+#kmer-1
+THREADS=6 CONCURRENCY=3 RATE=0.1 SAMPLE=HG002 bash ~/git/AvidityManuscript2023/bash/run_error_by_kmer.sh -r <path_to_sample_specific_dir_containing_bam> -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -b AvidityManuscript2023/data/bed/GRCh38_10bp_1000000_random/ -i test__kmer-1 -o test_kmer-1/ -k 1 -w <path_to_scratch_dir>
+#kmer-2
+THREADS=6 CONCURRENCY=3 RATE=0.1 SAMPLE=HG002 bash ~/git/AvidityManuscript2023/bash/run_error_by_kmer.sh -r <path_to_sample_specific_dir_containing_bam> -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -b AvidityManuscript2023/data/bed/GRCh38_10bp_1000000_random/ -i test__kmer-2 -o test_kmer-2/ -k 2 -w <path_to_scratch_dir>
+#kmer-3
+THREADS=6 CONCURRENCY=3 RATE=0.1 SAMPLE=HG002 bash ~/git/AvidityManuscript2023/bash/run_error_by_kmer.sh -r <path_to_sample_specific_dir_containing_bam> -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -b AvidityManuscript2023/data/bed/GRCh38_10bp_1000000_random/ -i test__kmer-3 -o test_kmer-3/ -k 3 -w <path_to_scratch_dir>
+```
 
 ## ExtendedDataFigure 3
 
