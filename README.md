@@ -74,6 +74,8 @@ jupyter lab --no-browser
  
 Figure 5: The mismatch rate comparison following homopolymers lengths 4 through 29.  The mismatch percent difference between avidity sequencing and SBS increases with homopolymer length.  The box plot shows median, quartiles, and the whiskers are 1.5*IQR.
 
+Data was analyzed and plotted as described in Figure 4 (https://github.com/Elembio/AvidityManuscript2023/blob/main/README.md#figure-4)
+
 
 ## ExtendedDataFigure 1 
 not applicable
