@@ -1,0 +1,5 @@
+numpy
+s3path
+pybedtools
+pysam
+tqdm
