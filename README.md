@@ -17,6 +17,11 @@ conda activate AvidityManuscript2023
 pip3 install -r requirements.txt
 ```
 
+## Whole Genome Sequencing Analysis
+
+Whole genome sequencing analysis
+A FASTQ file with the base calls and quality scores was down-sampled to 35X raw coverage (360,320,126 Input reads) and used as an input into Sentieon BWA following by Sentieon DNAscope [44].  Following alignment and variant calling, the variant calls were compared to the NIST genome in a bottle truth set v4.2.1 via the hap.py comparison framework to derive total error counts and F1 scores[45].  The results are computed based on the 3,848,590 SNV and 982,234 indel passing variant calls made by DNAScope.
+
 ## Figure-1
 not applicable
 
@@ -27,9 +32,10 @@ not applicable
 
 ## Figure-3
 
-Figure 3: Predicted and observed quality scores for a 2x150 bp sequencing run of human genome HG002.  The left panel shows read 1 and the right panel shows read 2.  Points on the diagonal indicate that predicted scores match observed scores.  The histograms show that the majority of the data points are above Q40, or 1 error in 10,000 bp.
+Figure 3: Predicted and observed quality scores for a 2x150 bp sequencing run of human genome HG002.  Panel (a) shows read 1 and the panel (b) shows read 2.  Points on the diagonal indicate that predicted scores match observed scores.  The histograms show that the majority of the data points are above Q40, or 1 error in 10,000 bp.
 
-To assess the accuracy of quality scores shown in Figure 3, the FASTQ files were aligned with BWA to generate BAM files. GATK BaseRecalibrartor was then applied to the BAM, specifying publicly available known sites files to exclude human variant positions. 
+To assess the accuracy of quality scores shown in Fig. 3, the FASTQ files were aligned with BWA to generate BAM files. GATK BaseRecalibrartor was then applied to the BAM, specifying publicly available known sites files to exclude human variant positions. 
+
 The command used is found below:     
 
 ```
@@ -38,13 +44,13 @@ gatk BaseRecalibrator --preserve-qscores-less-than 0 -R genome.fa -I sample.bam 
 
 ## Figure-4
 
-Figure 4: The mismatch percentage of AVITI and NovaSeq reads before and after homopolymers of length 12 or greater.
+Figure 4: The mismatch percentage of AVITI, NovaSeq 6000, and NextSeq 2000 reads before and after homopolymers of length 12 or greater.  
 
 A BED file provided by NIST genome-stratifications v3.0, containing 673,650 homopolymers of length greater than 11 was used to define the regions of interest for the homopolymer analysis (s3://giab/release/genome-stratifications/v3.0/GRCh38/LowComplexity/GRCh38_SimpleRepeat_homopolymer_gt11_slop5.bed.gz).  Reads that overlapped these BED intervals (using samtools view -L and adjusting for the slop5) were selected for accuracy analysis.  Reads with any of the following flags set were discarded (secondary, supplementary, unmapped or reads with mapping quality of 0).  Reads were oriented in the 5’ -> 3’ direction, and split into 3 segments, preceding the homopolymer, overlapping the homopolymer, and following the homopolymer.  The mismatch rate for each read-segment was computed, excluding N-calls, softclipped bases and indels.  For example, if a 150 bp read (aligned on the forward strand) contains a homopolymer in positions 100-120, then the first 99 cycles were used to compute the error rate prior to the homopolymer, and the last 30 cycles were used to compute the error rate following the homopolymer.  Reads were discarded if either the sequence preceding or following the homopolymer was less than 5bp in length.   All reads were then stacked into a matrix, according to their positional offset relative to the homopolymer, and error rate per pos-offset was computed.
 
 The average error rate was computed for avidity sequencing runs and for publicly available data from multiple SBS instruments, for comparison.  The differences of mismatch percentages, across all BED intervals, between AVITI™ and NovaSeq were plotted in a histogram and examples showing various percentiles within the distribution were chosen for display via IGV.
 
-Publicly available data sets for HiSeq and NovaSeq were obtained from the Google Brain Public Data repository on Google Cloud and from the PrecisionFDA Truth Challenge 2 data repository[41, 42]. 
+Publicly available data sets for NovaSeq were obtained from the Google Brain Public Data repository on Google Cloud [42].  Publicly available NextSeq 2000 data was obtained from Illumina demo data on BaseSpace [43]. 
 
 The *.interval-error.tsv and *.offset-error.tsv files can be found in the below directory:
 https://github.com/Elembio/AvidityManuscript2023/tree/main/data/homopolymer-error/GRCh38_SimpleRepeat_homopolymer_gt11_slop5
@@ -63,26 +69,34 @@ jupyter lab --no-browser
 
 ## Figure-5
  
-Figure 5: 
+Figure 5: The mismatch rate comparison following homopolymers lengths 4 through 29.  The mismatch percent difference between avidity sequencing and SBS increases with homopolymer length.  The box plot shows median, quartiles, and the whiskers are 1.5*IQR.
 
 
 ## ExtendedDataFigure 1 
 not applicable
 
 ## ExtendedDataFigure 2
-not applicable
+
+Extended Data Fig. 2: Percentage of instances that a k-mer contained at least one mismatch compared across 3 instruments.  Panels A, B, and C display 1-mers, 2-mers, and 3-mers, respectively.  The bars are sorted by AVITI contexts from most to least accurate.      
+
+The same run used to generate the recalibrated quality scores was analyzed via custom script for all k-mers of size 1, 2, and 3.  The computation is based on 1% of a 35X genome to ensure adequate sampling of each k-mer.  For example, each 3-mer is sampled at least 850 thousand times with an average of 6.7 million times.  The figure is based on a publicly available run from each platform.  For the instances of each k-mer, the percent mismatching a variant-masked reference was computed.  The same script was applied to a publicly available NovaSeq data set for HG002 and a publicly available NextSeq 2000 data set for HG001 (demo data for HG002 was not available).  We tabulated the number of k-mers in which the percent incorrect was lowest for AVITI among the three platforms compared.   
 
 ## ExtendedDataFigure 3
-not applicable
+
+Extended Data Fig. 3: Histogram of pairwise error differences.  Difference was selected as the metric to cancel the effects of human variants from the mismatch percent.
 
 ## ExtendedDataFigure 4
-not applicable
+
+Extended Data Fig. 4: IGV display of homopolymer loci at the 5thth, 50thth, and 95thth percentile of AVITI minus NovaSeq mismatch percent (corresponding to the dashed lines of Extended Data Fig. 3).  The red bar at the top indicates the homopolymer.  Colors within the IGV read stack correspond to mismatches and softclipping.  Only mismatches contribute to the error rate calculation and softclipped bases are ignored.    
+
 
 ## ExtendedDataFigure 5 
-not applicable
+
+Extended Data Fig. 5: Comparison of read number vs genomic coverage computed via Picard for PCR-free whole genome data.  AVITI most closely matches the 45-degree line due to the low duplicate rate. 
 
 ## ExtendedDataFigure 6
-not applicable
+
+Extended Data Fig. 6: F1 score for SNPs and indels stratified by all GiaB regions with at least 100 variants in the 4.2.1 truth set of sample HG002.
 
 ## Open Jupyter-Lab notebooks
 ```
