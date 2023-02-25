@@ -2,11 +2,7 @@
 
 Bioinformatic tools and scripts to support Arslan et. al., Sequencing by avidity enables high accuracy with low reagent consumption.
 
-Andrew Altomare
-Bryan R Lajoie
-Edmund Miller
-Ryan Kelley
-Semyon Kruglyak
+Andrew Altomare, Bryan R Lajoie, Edmund Miller, Ryan Kelley, Semyon Kruglyak
 
 ## Abstract
 We present avidity sequencing - a novel sequencing chemistry that separately optimizes the process of stepping along a DNA template and the process of identifying each nucleotide within the template.  Nucleotide identification uses multivalent nucleotide ligands on dye-labeled cores to form polymerase-polymer nucleotide complexes bound to clonal copies of DNA targets.  These polymer-nucleotide substrates, termed avidites, decrease the required concentration of reporting nucleotides from micromolar to nanomolar, and yield negligible dissociation rates.  We demonstrate the use of avidites as a key component of a sequencing technology that surpasses Q40 accuracy and enables a diversity of applications that include single cell RNA-seq and whole human genome sequencing.  We also show the advantages of this technology in sequencing through long homopolymers.  
