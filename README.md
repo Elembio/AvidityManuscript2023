@@ -2,6 +2,12 @@
 
 Bioinformatic tools and scripts to support Arslan et. al., Sequencing by avidity enables high accuracy with low reagent consumption.
 
+Andrew Altomare
+Bryan R Lajoie
+Edmund Miller
+Ryan Kelley
+Semyon Kruglyak
+
 ## Abstract
 We present avidity sequencing - a novel sequencing chemistry that separately optimizes the process of stepping along a DNA template and the process of identifying each nucleotide within the template.  Nucleotide identification uses multivalent nucleotide ligands on dye-labeled cores to form polymerase-polymer nucleotide complexes bound to clonal copies of DNA targets.  These polymer-nucleotide substrates, termed avidites, decrease the required concentration of reporting nucleotides from micromolar to nanomolar, and yield negligible dissociation rates.  We demonstrate the use of avidites as a key component of a sequencing technology that surpasses Q40 accuracy and enables a diversity of applications that include single cell RNA-seq and whole human genome sequencing.  We also show the advantages of this technology in sequencing through long homopolymers.  
 
@@ -71,7 +77,17 @@ jupyter lab --no-browser
 
 ## Figure-5
  
-Figure 5: The mismatch rate comparison following homopolymers lengths 4 through 29.  The mismatch percent difference between avidity sequencing and SBS increases with homopolymer length.  The box plot shows median, quartiles, and the whiskers are 1.5*IQR.
+Figure 5: The mismatch rate comparison following homopolymers lengths 4 through 29.  The mismatch percent difference between avidity sequencing and SBS increases with homopolymer length.  The box plot shows median, quartiles, and the whiskers are 1.5*IQR.  
+
+For this analysis, the following GIAB supplied bed files were combined, and duplicates were removed:
+
+s3://giab/release/genome-stratifications/v3.0/GRCh38/LowComplexity/GRCh38_SimpleRepeat_homopolymer_4to6_slop5.bed.gz
+s3://giab/release/genome-stratifications/v3.0/GRCh38/LowComplexity/GRCh38_SimpleRepeat_homopolymer_7to11_slop5.bed.gz
+s3://giab/release/genome-stratifications/v3.0/GRCh38/LowComplexity/GRCh38_SimpleRepeat_homopolymer_gt11_slop5.bed.gz
+s3://giab/release/genome-stratifications/v3.0/GRCh38/LowComplexity/GRCh38_SimpleRepeat_homopolymer_gt20_slop5.bed.gz
+
+Producing a new bed file representing all homopolymer of size 4 to inf.
+GRCh38_SimpleRepeat_homopolymer_4toinf_slop5
 
 Data was analyzed and plotted as described in Figure 4 (https://github.com/Elembio/AvidityManuscript2023/blob/main/README.md#figure-4)
 
@@ -90,9 +106,9 @@ The command used to generate the kmer-error across the three K sizes [1,2,3]:
 #kmer-1
 THREADS=6 CONCURRENCY=3 RATE=0.1 SAMPLE=HG002 bash AvidityManuscript2023/bash/run_error_by_kmer.sh -r <path_to_sample_specific_dir_containing_bam> -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -b AvidityManuscript2023/data/bed/GRCh38_10bp_1000000_random/ -i test__kmer-1 -o test_kmer-1/ -k 1 -w <path_to_scratch_dir>
 #kmer-2
-THREADS=6 CONCURRENCY=3 RATE=0.1 SAMPLE=HG002 bash ~/git/AvidityManuscript2023/bash/run_error_by_kmer.sh -r <path_to_sample_specific_dir_containing_bam> -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -b AvidityManuscript2023/data/bed/GRCh38_10bp_1000000_random/ -i test__kmer-2 -o test_kmer-2/ -k 2 -w <path_to_scratch_dir>
+THREADS=6 CONCURRENCY=3 RATE=0.1 SAMPLE=HG002 bash AvidityManuscript2023/bash/run_error_by_kmer.sh -r <path_to_sample_specific_dir_containing_bam> -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -b AvidityManuscript2023/data/bed/GRCh38_10bp_1000000_random/ -i test__kmer-2 -o test_kmer-2/ -k 2 -w <path_to_scratch_dir>
 #kmer-3
-THREADS=6 CONCURRENCY=3 RATE=0.1 SAMPLE=HG002 bash ~/git/AvidityManuscript2023/bash/run_error_by_kmer.sh -r <path_to_sample_specific_dir_containing_bam> -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -b AvidityManuscript2023/data/bed/GRCh38_10bp_1000000_random/ -i test__kmer-3 -o test_kmer-3/ -k 3 -w <path_to_scratch_dir>
+THREADS=6 CONCURRENCY=3 RATE=0.1 SAMPLE=HG002 bash AvidityManuscript2023/bash/run_error_by_kmer.sh -r <path_to_sample_specific_dir_containing_bam> -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -b AvidityManuscript2023/data/bed/GRCh38_10bp_1000000_random/ -i test__kmer-3 -o test_kmer-3/ -k 3 -w <path_to_scratch_dir>
 ```
 
 The scripts/notebooks supporting the plots and figure generation:
