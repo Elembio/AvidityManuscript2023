@@ -1,0 +1,36 @@
+name: AvidityManuscript2023
+
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  - python>=3.9
+  - pip
+  - pre-commit
+  - samtools>=1.9 # https://github.com/bioconda/bioconda-recipes/issues/13958
+  - htslib
+  - bcftools
+  - awscli
+  - biopython
+  - pysam
+  - parallel
+  - pip:
+      - numpy
+      - s3path
+      - pybedtools 
+      - pandas
+      - tqdm
+      - matplotlib
+      - matplotlib_venn
+      - seaborn
+      - openpyxl
+      - pysam
+      - boto3
+      - igv-jupyter
+      - rich
+      - jupyter
+      - jupyterlab
+      - jupytext
+      - jupyterlab_code_formatter

@@ -5,16 +5,15 @@ Bioinformatic tools and scripts to support Arslan et. al., Sequencing by avidity
 ## Abstract
 We present avidity sequencing - a novel sequencing chemistry that separately optimizes the process of stepping along a DNA template and the process of identifying each nucleotide within the template.  Nucleotide identification uses multivalent nucleotide ligands on dye-labeled cores to form polymerase-polymer nucleotide complexes bound to clonal copies of DNA targets.  These polymer-nucleotide substrates, termed avidites, decrease the required concentration of reporting nucleotides from micromolar to nanomolar, and yield negligible dissociation rates.  We demonstrate the use of avidites as a key component of a sequencing technology that surpasses Q40 accuracy and enables a diversity of applications that include single cell RNA-seq and whole human genome sequencing.  We also show the advantages of this technology in sequencing through long homopolymers.  
 
-<tbd paper link>
+biorxiv - https://www.biorxiv.org/content/10.1101/2022.11.03.514117v1
+doi: https://doi.org/10.1101/2022.11.03.514117
+
+<tbd publication link>
 
 ## Setup/Install
 ```
-<download and install conda>
-<install samtools, install parallel>
-..
-conda create -n AvidityManuscript2023 python=3.9
-conda activate AvidityManuscript2023
-pip3 install -r requirements.txt
+mamba env create -f environment.yml
+mamba activate AvidityManuscript2023
 ```
 
 ## Whole Genome Sequencing Analysis
@@ -89,7 +88,7 @@ The same run used to generate the recalibrated quality scores was analyzed via c
 The command used to generate the kmer-error across the three K sizes [1,2,3]:
 ```
 #kmer-1
-THREADS=6 CONCURRENCY=3 RATE=0.1 SAMPLE=HG002 bash ~/git/AvidityManuscript2023/bash/run_error_by_kmer.sh -r <path_to_sample_specific_dir_containing_bam> -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -b AvidityManuscript2023/data/bed/GRCh38_10bp_1000000_random/ -i test__kmer-1 -o test_kmer-1/ -k 1 -w <path_to_scratch_dir>
+THREADS=6 CONCURRENCY=3 RATE=0.1 SAMPLE=HG002 bash AvidityManuscript2023/bash/run_error_by_kmer.sh -r <path_to_sample_specific_dir_containing_bam> -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -b AvidityManuscript2023/data/bed/GRCh38_10bp_1000000_random/ -i test__kmer-1 -o test_kmer-1/ -k 1 -w <path_to_scratch_dir>
 #kmer-2
 THREADS=6 CONCURRENCY=3 RATE=0.1 SAMPLE=HG002 bash ~/git/AvidityManuscript2023/bash/run_error_by_kmer.sh -r <path_to_sample_specific_dir_containing_bam> -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -b AvidityManuscript2023/data/bed/GRCh38_10bp_1000000_random/ -i test__kmer-2 -o test_kmer-2/ -k 2 -w <path_to_scratch_dir>
 #kmer-3
