@@ -77,10 +77,12 @@ Figure 5: The mismatch rate comparison following homopolymers lengths 4 through 
 
 For this analysis, the following GIAB supplied bed files were combined, and duplicates were removed:
 
+```
 s3://giab/release/genome-stratifications/v3.0/GRCh38/LowComplexity/GRCh38_SimpleRepeat_homopolymer_4to6_slop5.bed.gz
 s3://giab/release/genome-stratifications/v3.0/GRCh38/LowComplexity/GRCh38_SimpleRepeat_homopolymer_7to11_slop5.bed.gz
 s3://giab/release/genome-stratifications/v3.0/GRCh38/LowComplexity/GRCh38_SimpleRepeat_homopolymer_gt11_slop5.bed.gz
 s3://giab/release/genome-stratifications/v3.0/GRCh38/LowComplexity/GRCh38_SimpleRepeat_homopolymer_gt20_slop5.bed.gz
+```
 
 Producing a new bed file representing all homopolymer of size 4 to inf.
 GRCh38_SimpleRepeat_homopolymer_4toinf_slop5
