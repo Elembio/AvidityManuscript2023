@@ -62,6 +62,7 @@ https://github.com/Elembio/AvidityManuscript2023/tree/main/data/homopolymer-erro
 
 The command used to generate the homopoylmer-error:
 ```
+# GRCh38_SimpleRepeat_homopolymer_gt11_slop5
 THREADS=6 CONCURRENCY=3 RATE=1.0 SLOP=5 MIN_INTERVAL=1 MIN_PRE=10 MIN_POST=10 bash AvidityManuscript2023/bash/run_stack_reads.sh -r <path_to_sample_specific_dir_containing_bam> -b AvidityManuscript2023/data/bed/GRCh38_SimpleRepeat_homopolymer_gt11_slop5/ -g AvidityManuscript2023/data/genome/Homo_sapiens_assembly38_primaryonly/ -i test__GRCh38_SimpleRepeat_homopolymer_gt11_slop5 -o test__GRCh38_SimpleRepeat_homopolymer_gt11_slop5 -w <path_to_scratch_dir>
 ```
 
