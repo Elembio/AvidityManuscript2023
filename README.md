@@ -20,7 +20,6 @@ mamba activate AvidityManuscript2023
 
 ## Whole Genome Sequencing Analysis
 
-Whole genome sequencing analysis
 A FASTQ file with the base calls and quality scores was down-sampled to 35X raw coverage (360,320,126 Input reads) and used as an input into Sentieon BWA following by Sentieon DNAscope [44].  Following alignment and variant calling, the variant calls were compared to the NIST genome in a bottle truth set v4.2.1 via the hap.py comparison framework to derive total error counts and F1 scores[45].  The results are computed based on the 3,848,590 SNV and 982,234 indel passing variant calls made by DNAScope.
 
 ## Figure-1
