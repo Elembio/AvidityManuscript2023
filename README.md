@@ -134,7 +134,7 @@ Extended Data Fig. 5: Comparison of read number vs genomic coverage computed via
 
 Another common application is human whole genome sequencing.  This application challenges sequencer accuracy to a greater extent than measuring gene expression because the latter requires only accurate alignment while the former depends on nucleotide accuracy to resolve variant calls.  To demonstrate performance for this application, the well characterized human sample HG002 was prepared for sequencing using a Covaris shearing and PCR-free library preparation method and sequenced with 2x150bp reads.  The run generated 1.02 billion passing filter paired-end reads with a duplicate rate of 0.58% (0.11% classified as optical duplicates by Picard[37]).  To underscore the impact of low duplicates, we compared the number of input reads to genomic coverag (Extended Data Fig. 5).
 
-Data was analyzed as described in WGS )https://github.com/Elembio/AvidityManuscript2023#whole-genome-sequencing-analysis)
+Data was analyzed as described in WGS (https://github.com/Elembio/AvidityManuscript2023#whole-genome-sequencing-analysis)
 
 ## ExtendedDataFigure 6
 
@@ -142,7 +142,7 @@ Extended Data Fig. 6: F1 score for SNPs and indels stratified by all GiaB region
 
 A FASTQ file with the base calls and quality scores was down-sampled to 35X coverage and used as an input into the DNAScope analysis pipeline from Sentieon.  SNP and indel calls achieved F1 scores of 0.995 and 0.996, respectively.  Table 2 shows variant calling performance for SNPs and small indels on the GIAB-HC regions.  Sensitivity, precision, and F1-score are shown.  The performance on SNPs and indels is comparable.  Extended Data Fig. 6 shows the F1 score for SNPs and indels across all GiaB stratifictions with at least 100 variants in the truth set.  
 
-Data was analyzed as described in WGS )https://github.com/Elembio/AvidityManuscript2023#whole-genome-sequencing-analysis)
+Data was analyzed as described in WGS (https://github.com/Elembio/AvidityManuscript2023#whole-genome-sequencing-analysis)
 
 ## Open Jupyter-Lab notebooks
 ```
